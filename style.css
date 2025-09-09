@@ -16,19 +16,19 @@
     --color-primary: hsl(262, 83%, 58%);
     --color-accent: hsl(204, 92%, 58%);
     --border-color: hsl(220, 15%, 18%);
-    
+
     /* Gradients */
     --gradient-primary: linear-gradient(135deg, hsl(262, 83%, 58%), hsl(204, 92%, 58%));
     --gradient-secondary: linear-gradient(135deg, hsl(220, 20%, 12%), hsl(220, 15%, 18%));
     --gradient-hero: linear-gradient(135deg, hsl(262, 83%, 58%) 0%, hsl(204, 92%, 58%) 100%);
-    
+
     /* Shadows */
     --shadow-glow: 0 0 40px hsl(262 83% 58% / 0.3);
     --shadow-card: 0 10px 30px -10px hsl(220 25% 8% / 0.5);
-    
+
     /* Transitions */
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    
+
     /* Border radius */
     --radius: 0.75rem;
     --radius-sm: 0.5rem;
@@ -875,70 +875,123 @@ body {
 
 /* Animations */
 @keyframes bounce {
-    0%, 20%, 53%, 80%, 100% {
+
+    0%,
+    20%,
+    53%,
+    80%,
+    100% {
         transform: translate3d(0, 0, 0);
     }
-    40%, 43% {
+
+    40%,
+    43% {
         transform: translate3d(0, -1rem, 0);
     }
+
     70% {
         transform: translate3d(0, -0.5rem, 0);
     }
+
     90% {
         transform: translate3d(0, -0.25rem, 0);
     }
 }
 
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         opacity: 1;
     }
+
     50% {
         opacity: 0.5;
     }
 }
+
+
+/* Mobile menu styles */
+.nav-menu.active {
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: rgba(29, 33, 41, 0.95);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 999;
+}
+
+.nav-menu.active.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
     .nav-menu {
         display: none;
     }
-    
+
+    .nav-menu.active {
+        display: flex;
+    }
+
     .nav-toggle {
         display: flex;
     }
-    
+
     .hero-buttons {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .btn {
         width: 100%;
         max-width: 300px;
     }
-    
+
     .specialties {
         grid-template-columns: 1fr;
     }
-    
+
     .skills-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .projects-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .contact-content {
         grid-template-columns: 1fr;
         gap: 2rem;
     }
-    
+
     .footer-social {
         gap: 1rem;
     }
-    
+
     .toast {
         right: 1rem;
         left: 1rem;
@@ -950,27 +1003,27 @@ body {
     .container {
         padding: 0 1rem;
     }
-    
+
     .hero-content {
         padding: 0 1rem;
     }
-    
+
     .section-title {
         font-size: 2.5rem;
     }
-    
+
     .section-description {
         font-size: 1.125rem;
     }
-    
+
     .projects-grid {
         grid-template-columns: 1fr;
     }
-    
+
     .project-card {
         padding: 1rem;
     }
-    
+
     .project-buttons {
         flex-direction: column;
     }

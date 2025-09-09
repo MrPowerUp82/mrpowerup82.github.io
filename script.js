@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initializeContactForm();
     initializeAnimations();
     updateCurrentYear();
+    initializeMobileMenu();
 });
 
 // Header scroll effect
@@ -238,8 +239,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 });
 
-// Mobile menu toggle (if you want to add mobile menu later)
-function toggleMobileMenu() {
+// Initialize mobile menu
+function initializeMobileMenu() {
     const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
 
@@ -247,10 +248,35 @@ function toggleMobileMenu() {
         navToggle.addEventListener('click', function () {
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
+
+            // Add show class after a small delay for animation
+            if (navMenu.classList.contains('active')) {
+                setTimeout(() => {
+                    navMenu.classList.add('show');
+                }, 10);
+            } else {
+                navMenu.classList.remove('show');
+            }
+        });
+
+        // Close menu when clicking on a link
+        const navLinks = navMenu.querySelectorAll('.nav-link, .nav-button');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function () {
+                navMenu.classList.remove('active', 'show');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (e) {
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active', 'show');
+                navToggle.classList.remove('active');
+            }
         });
     }
 }
-
 // Keyboard accessibility
 document.addEventListener('keydown', function (e) {
     // Close toast with Escape key
