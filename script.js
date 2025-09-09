@@ -1,5 +1,5 @@
 // DOM Content Loaded
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Initialize all functionality
     initializeHeader();
     initializeSmoothScrolling();
@@ -11,8 +11,8 @@ document.addEventListener('DOMContentLoaded', function() {
 // Header scroll effect
 function initializeHeader() {
     const header = document.getElementById('header');
-    
-    window.addEventListener('scroll', function() {
+
+    window.addEventListener('scroll', function () {
         if (window.scrollY > 50) {
             header.classList.add('scrolled');
         } else {
@@ -25,17 +25,17 @@ function initializeHeader() {
 function initializeSmoothScrolling() {
     // Navigation links
     const navLinks = document.querySelectorAll('a[href^="#"]');
-    
+
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             const targetId = this.getAttribute('href');
             const targetSection = document.querySelector(targetId);
-            
+
             if (targetSection) {
                 const offsetTop = targetSection.offsetTop - 80; // Account for fixed header
-                
+
                 window.scrollTo({
                     top: offsetTop,
                     behavior: 'smooth'
@@ -47,7 +47,7 @@ function initializeSmoothScrolling() {
     // Hero arrow click
     const heroArrow = document.querySelector('.hero-arrow');
     if (heroArrow) {
-        heroArrow.addEventListener('click', function() {
+        heroArrow.addEventListener('click', function () {
             const aboutSection = document.getElementById('about');
             if (aboutSection) {
                 const offsetTop = aboutSection.offsetTop - 80;
@@ -63,28 +63,28 @@ function initializeSmoothScrolling() {
 // Contact form handling
 function initializeContactForm() {
     const contactForm = document.getElementById('contact-form');
-    
+
     if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
-            
+
             // Get form data
             const formData = new FormData(this);
             const name = formData.get('name');
             const email = formData.get('email');
             const message = formData.get('message');
-            
+
             // Basic validation
             if (!name || !email || !message) {
                 showToast('Por favor, preencha todos os campos!', 'error');
                 return;
             }
-            
+
             if (!isValidEmail(email)) {
                 showToast('Por favor, insira um email válido!', 'error');
                 return;
             }
-            
+
             // Simulate form submission
             submitContactForm(name, email, message);
         });
@@ -102,7 +102,7 @@ function submitContactForm(name, email, message) {
     // Show loading state (you could add a loading spinner here)
     const submitButton = document.querySelector('#contact-form button[type="submit"]');
     const originalText = submitButton.innerHTML;
-    
+
     submitButton.innerHTML = `
         <svg class="btn-icon animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M21 12a9 9 0 11-6.219-8.56"/>
@@ -110,19 +110,19 @@ function submitContactForm(name, email, message) {
         Enviando...
     `;
     submitButton.disabled = true;
-    
+
     // Simulate API call delay
     setTimeout(() => {
         // Reset form
         document.getElementById('contact-form').reset();
-        
+
         // Reset button
         submitButton.innerHTML = originalText;
         submitButton.disabled = false;
-        
+
         // Show success message
         showToast('Mensagem enviada!', 'success');
-        
+
         // In a real application, you would send the data to your server here
         console.log('Contact form submitted:', { name, email, message });
     }, 1500);
@@ -132,7 +132,7 @@ function submitContactForm(name, email, message) {
 function showToast(message, type = 'success') {
     const toast = document.getElementById('toast');
     const toastContent = toast.querySelector('.toast-content');
-    
+
     // Update toast content based on type
     if (type === 'success') {
         toastContent.innerHTML = `
@@ -161,10 +161,10 @@ function showToast(message, type = 'success') {
             </div>
         `;
     }
-    
+
     // Show toast
     toast.classList.add('show');
-    
+
     // Hide toast after 4 seconds
     setTimeout(() => {
         toast.classList.remove('show');
@@ -178,7 +178,7 @@ function initializeAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -187,22 +187,22 @@ function initializeAnimations() {
             }
         });
     }, observerOptions);
-    
+
     // Observe elements for animation
     const animatedElements = document.querySelectorAll('.specialty-card, .skill-category, .project-card');
-    
+
     animatedElements.forEach(el => {
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
-    
+
     // Parallax effect for hero particles
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         const particles = document.querySelectorAll('.particle');
-        
+
         particles.forEach((particle, index) => {
             const speed = 0.5 + (index * 0.1);
             particle.style.transform = `translateY(${scrolled * speed}px)`;
@@ -219,16 +219,16 @@ function updateCurrentYear() {
 }
 
 // Download CV functionality
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const downloadButton = document.getElementById('download-cv');
-    
+
     if (downloadButton) {
-        downloadButton.addEventListener('click', function(e) {
+        downloadButton.addEventListener('click', function (e) {
             e.preventDefault();
-            
+
             // You can replace this with actual CV download logic
             showToast('CV será baixado em breve!', 'success');
-            
+
             // Example: Create a download link for your CV
             // const link = document.createElement('a');
             // link.href = 'path/to/your/cv.pdf';
@@ -242,9 +242,9 @@ document.addEventListener('DOMContentLoaded', function() {
 function toggleMobileMenu() {
     const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
-    
+
     if (navMenu && navToggle) {
-        navToggle.addEventListener('click', function() {
+        navToggle.addEventListener('click', function () {
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
         });
@@ -252,7 +252,7 @@ function toggleMobileMenu() {
 }
 
 // Keyboard accessibility
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     // Close toast with Escape key
     if (e.key === 'Escape') {
         const toast = document.getElementById('toast');
@@ -287,7 +287,7 @@ function preloadImages() {
         // 'path/to/your/image1.jpg',
         // 'path/to/your/image2.jpg'
     ];
-    
+
     imageUrls.forEach(url => {
         const img = new Image();
         img.src = url;
