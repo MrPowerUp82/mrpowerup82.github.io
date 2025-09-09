@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize all functionality
     initializeHeader();
     initializeSmoothScrolling();
-    initializeContactForm();
+    // initializeContactForm();
     initializeAnimations();
     updateCurrentYear();
     initializeMobileMenu();
@@ -143,8 +143,8 @@ function showToast(message, type = 'success') {
                 </svg>
             </div>
             <div>
-                <h4>Mensagem enviada!</h4>
-                <p>Obrigado pelo contato. Responderei em breve!</p>
+                <h4>Sucesso!</h4>
+                <p>${message}</p>
             </div>
         `;
     } else if (type === 'error') {
@@ -231,10 +231,10 @@ document.addEventListener('DOMContentLoaded', function () {
             showToast('CV será baixado em breve!', 'success');
 
             // Example: Create a download link for your CV
-            // const link = document.createElement('a');
-            // link.href = 'path/to/your/cv.pdf';
-            // link.download = 'CV-FullStack-Developer.pdf';
-            // link.click();
+            const link = document.createElement('a');
+            link.href = 'CV.pdf';
+            link.download = 'CV-FullStack-Developer.pdf';
+            link.click();
         });
     }
 });

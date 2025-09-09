@@ -204,10 +204,11 @@ body {
     max-width: 64rem;
     margin: 0 auto;
     padding: 0 1.5rem;
+    margin-top: 4rem;
 }
 
 .hero-title {
-    font-size: clamp(3rem, 8vw, 7rem);
+    font-size: clamp(2rem, 6vw, 5rem);
     font-weight: bold;
     margin-bottom: 1.5rem;
     line-height: 1.1;
