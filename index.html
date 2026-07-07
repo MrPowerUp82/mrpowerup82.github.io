@@ -4,51 +4,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Full-Stack Developer - Python, PHP, JavaScript & IoT</title>
+  <title>Gustavo Tramonte — Engenheiro Eletricista & Desenvolvedor Full-Stack</title>
   <meta name="description"
-    content="Desenvolvedor Full-Stack especializado em Python, PHP, JavaScript e desenvolvimento IoT com Arduino/NodeMCU. Confira meu portfólio e projetos." />
-  <meta name="author" content="Full-Stack Developer" />
+    content="Gustavo Tramonte, engenheiro eletricista e desenvolvedor full-stack. Python, PHP, JavaScript e IoT com Arduino/NodeMCU. Confira meus projetos." />
+  <meta name="author" content="Gustavo Tramonte" />
+  <meta name="theme-color" content="#0d1117" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Full-Stack Developer - Python, PHP, JavaScript & IoT" />
+  <meta property="og:title" content="Gustavo Tramonte — Engenheiro Eletricista & Desenvolvedor Full-Stack" />
   <meta property="og:description"
-    content="Desenvolvedor Full-Stack especializado em Python, PHP, JavaScript e desenvolvimento IoT com Arduino/NodeMCU. Confira meu portfólio e projetos." />
+    content="Engenheiro eletricista e desenvolvedor full-stack. Python, PHP, JavaScript e IoT com Arduino/NodeMCU. Confira meus projetos." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://mrpowerup82.github.io/" />
 
   <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card" content="summary" />
 
   <!-- Favicon -->
-  <link rel="icon" href="favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
+  <a href="#main" class="skip-link">Pular para o conteúdo</a>
+
   <!-- Header -->
   <header class="header" id="header">
     <nav class="nav">
       <div class="nav-content">
-        <div class="nav-logo">Dev Portfolio</div>
+        <a href="#main" class="nav-logo">Gustavo Tramonte</a>
         <div class="nav-menu" id="nav-menu">
           <a href="#about" class="nav-link">Sobre</a>
-          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#skills" class="nav-link">Tecnologias</a>
           <a href="#projects" class="nav-link">Projetos</a>
-          <a href="https://drive.google.com/drive/folders/1B92fP3188t7MhepXJruS81JUxQ1bGpGK"
+          <a href="https://drive.google.com/drive/folders/1B92fP3188t7MhepXJruS81JUxQ1bGpGK" target="_blank" rel="noopener noreferrer"
             class="nav-link">Certificados</a>
-          <a href="/mario-jump" class="nav-link">Jogar MarioJump</a>
-          <a href="/vampiric-survival" class="nav-link">Jogar Vampiric Survival</a>
+          <a href="/mario-jump" class="nav-link">MarioJump</a>
+          <a href="/vampiric-survival" class="nav-link">Vampiric Survival</a>
           <a href="#contact" class="nav-button">Contato</a>
         </div>
-        <div class="nav-toggle" id="nav-toggle">
+        <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false"
+          aria-controls="nav-menu">
           <span></span>
           <span></span>
           <span></span>
-        </div>
+        </button>
       </div>
     </nav>
   </header>
+
+  <main id="main">
 
   <!-- Hero Section -->
   <section class="hero">
@@ -63,8 +77,8 @@
     </div>
     <div class="hero-content">
       <h1 class="hero-title">
-        <span class="gradient-text">Eletrical Engineer</span><br>
-        <span>& Full-Stack Developer</span>
+        <span class="gradient-text">Engenheiro Eletricista</span><br>
+        <span>& Desenvolvedor Full-Stack</span>
       </h1>
       <p class="hero-description">
         Especialista em
@@ -75,7 +89,7 @@
       </p>
       <div class="hero-buttons">
         <a href="#projects" class="btn btn-primary">Ver Projetos</a>
-        <a href="CV.pdf" class="btn btn-outline" id="download-cv">
+        <a href="CV.pdf" download="CV-Gustavo-Tramonte.pdf" class="btn btn-outline" id="download-cv">
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
             <polyline points="7,10 12,15 17,10" />
@@ -293,7 +307,7 @@
             <span class="project-tag">NodeMCU</span>
           </div>
           <div class="project-buttons">
-            <a href="https://github.com/MrPowerUp82/ESP32-BlueJammer" target="_blank" class="btn btn-outline-sm">
+            <a href="https://github.com/MrPowerUp82/ESP32-BlueJammer" target="_blank" rel="noopener noreferrer" class="btn btn-outline-sm">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path
                   d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -328,7 +342,7 @@
             <span class="project-tag">TailwindCSS</span>
           </div>
           <div class="project-buttons">
-            <a href="https://github.com/MrPowerUp82/filament-sql-field" target="_blank" class="btn btn-outline-sm">
+            <a href="https://github.com/MrPowerUp82/filament-sql-field" target="_blank" rel="noopener noreferrer" class="btn btn-outline-sm">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path
                   d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -363,7 +377,7 @@
             <span class="project-tag">JavaScript</span>
           </div>
           <div class="project-buttons">
-            <a href="https://github.com/MrPowerUp82/mcmanager" target="_blank" class="btn btn-outline-sm">
+            <a href="https://github.com/MrPowerUp82/mcmanager" target="_blank" rel="noopener noreferrer" class="btn btn-outline-sm">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path
                   d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -397,7 +411,7 @@
             <span class="project-tag">Tizen Studio</span>
           </div>
           <div class="project-buttons">
-            <a href="https://github.com/MrPowerUp82/omnitrix-tizen-wearable" target="_blank" class="btn btn-outline-sm">
+            <a href="https://github.com/MrPowerUp82/omnitrix-tizen-wearable" target="_blank" rel="noopener noreferrer" class="btn btn-outline-sm">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path
                   d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -431,7 +445,7 @@
             <span class="project-tag">Python</span>
           </div>
           <div class="project-buttons">
-            <a href="https://github.com/MrPowerUp82/Eel-MusicPlayer-Python" target="_blank" class="btn btn-outline-sm">
+            <a href="https://github.com/MrPowerUp82/Eel-MusicPlayer-Python" target="_blank" rel="noopener noreferrer" class="btn btn-outline-sm">
               <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
                 <path
                   d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -443,7 +457,7 @@
       </div>
 
       <div class="projects-cta">
-        <a href="https://github.com/MrPowerUp82" target="_blank" class="btn btn-outline">
+        <a href="https://github.com/MrPowerUp82" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
             <path
               d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
@@ -467,9 +481,26 @@
 
       <div class="contact-content">
         <div class="contact-form-container">
-          <h3>Envie uma Mensagem</h3>
-          <!-- Indisponivel -->
-          <p>Formulário de contato em breve!</p>
+          <h3>Envie uma mensagem</h3>
+          <form class="contact-form" id="contact-form" novalidate>
+            <div class="form-group">
+              <label for="form-name">Nome</label>
+              <input type="text" id="form-name" name="name" placeholder="Seu nome" autocomplete="name" required />
+            </div>
+            <div class="form-group">
+              <label for="form-email">Email</label>
+              <input type="email" id="form-email" name="email" placeholder="voce@exemplo.com" autocomplete="email"
+                required />
+            </div>
+            <div class="form-group">
+              <label for="form-message">Mensagem</label>
+              <textarea id="form-message" name="message" rows="5"
+                placeholder="Conte um pouco sobre o seu projeto" required></textarea>
+            </div>
+            <p class="form-error" id="form-error" hidden></p>
+            <button type="submit" class="btn btn-primary">Enviar mensagem</button>
+            <p class="form-note">O envio abre no seu aplicativo de email — nenhum dado passa por servidores.</p>
+          </form>
         </div>
 
         <div class="contact-info">
@@ -506,14 +537,15 @@
           <div class="social-links">
             <h4>Redes Sociais</h4>
             <div class="social-icons">
-              <a href="https://github.com/MrPowerUp82" target="_blank" class="social-icon">
+              <a href="https://github.com/MrPowerUp82" target="_blank" rel="noopener noreferrer" class="social-icon"
+                aria-label="GitHub">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <path
                     d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
                 </svg>
               </a>
-              <a href="https://www.linkedin.com/in/gustavo-henrique-da-silva-tramonte-3ba89320b/" target="_blank"
-                class="social-icon">
+              <a href="https://www.linkedin.com/in/gustavo-henrique-da-silva-tramonte-3ba89320b/" target="_blank" rel="noopener noreferrer"
+                class="social-icon" aria-label="LinkedIn">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
                   <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
                   <rect x="2" y="9" width="4" height="12" />
@@ -534,33 +566,35 @@
       </div>
     </div>
   </section>
+  </main>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <div class="footer-content">
-        <h3 class="footer-title gradient-text">Full-Stack Developer</h3>
+        <h3 class="footer-title gradient-text">Gustavo Tramonte</h3>
         <p class="footer-description">
           Desenvolvendo soluções inovadoras com tecnologias modernas e foco na
           experiência do usuário.
         </p>
 
         <div class="footer-social">
-          <a href="https://github.com/MrPowerUp82" target="_blank" class="footer-social-link">
+          <a href="https://github.com/MrPowerUp82" target="_blank" rel="noopener noreferrer" class="footer-social-link"
+            aria-label="GitHub">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path
                 d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
             </svg>
           </a>
-          <a href="https://www.linkedin.com/in/gustavo-henrique-da-silva-tramonte-3ba89320b/" target="_blank"
-            class="footer-social-link">
+          <a href="https://www.linkedin.com/in/gustavo-henrique-da-silva-tramonte-3ba89320b/" target="_blank" rel="noopener noreferrer"
+            class="footer-social-link" aria-label="LinkedIn">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
               <rect x="2" y="9" width="4" height="12" />
               <circle cx="4" cy="4" r="2" />
             </svg>
           </a>
-          <a href="mailto:gustavohenrique8282@hotmail.com" class="footer-social-link">
+          <a href="mailto:gustavohenrique8282@hotmail.com" class="footer-social-link" aria-label="Email">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
               <polyline points="22,6 12,13 2,6" />
@@ -571,8 +605,7 @@
 
       <div class="footer-bottom">
         <p>
-          &copy; <span id="current-year"></span> Full-Stack Developer. Todos
-          os direitos reservados, por aquele que vós apresenta.
+          &copy; <span id="current-year"></span> Gustavo Tramonte. Todos os direitos reservados.
         </p>
       </div>
     </div>

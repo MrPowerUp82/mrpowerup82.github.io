@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Initialize all functionality
     initializeHeader();
     initializeSmoothScrolling();
-    // initializeContactForm();
+    initializeContactForm();
     initializeAnimations();
     updateCurrentYear();
     initializeMobileMenu();
@@ -61,72 +61,62 @@ function initializeSmoothScrolling() {
     }
 }
 
-// Contact form handling
+// Contact form: builds a mailto link so it works on static hosting (no backend)
 function initializeContactForm() {
     const contactForm = document.getElementById('contact-form');
+    if (!contactForm) return;
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
+    const errorElement = document.getElementById('form-error');
+    const fields = {
+        name: document.getElementById('form-name'),
+        email: document.getElementById('form-email'),
+        message: document.getElementById('form-message')
+    };
 
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-
-            // Basic validation
-            if (!name || !email || !message) {
-                showToast('Por favor, preencha todos os campos!', 'error');
-                return;
-            }
-
-            if (!isValidEmail(email)) {
-                showToast('Por favor, insira um email válido!', 'error');
-                return;
-            }
-
-            // Simulate form submission
-            submitContactForm(name, email, message);
-        });
+    function setError(message, invalidFields) {
+        Object.values(fields).forEach(field => field.classList.remove('invalid'));
+        if (message) {
+            errorElement.textContent = message;
+            errorElement.hidden = false;
+            invalidFields.forEach(field => field.classList.add('invalid'));
+            invalidFields[0].focus();
+        } else {
+            errorElement.hidden = true;
+        }
     }
+
+    contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = fields.name.value.trim();
+        const email = fields.email.value.trim();
+        const message = fields.message.value.trim();
+
+        const empty = [fields.name, fields.email, fields.message].filter(field => !field.value.trim());
+        if (empty.length > 0) {
+            setError('Preencha todos os campos para enviar a mensagem.', empty);
+            return;
+        }
+
+        if (!isValidEmail(email)) {
+            setError('Insira um endereço de email válido.', [fields.email]);
+            return;
+        }
+
+        setError(null, []);
+
+        const subject = encodeURIComponent(`Contato pelo portfólio — ${name}`);
+        const body = encodeURIComponent(`${message}\n\n— ${name} (${email})`);
+        window.location.href = `mailto:gustavohenrique8282@hotmail.com?subject=${subject}&body=${body}`;
+
+        showToast('Abrindo seu aplicativo de email...', 'success');
+    });
 }
 
 // Email validation
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
-}
-
-// Simulate contact form submission
-function submitContactForm(name, email, message) {
-    // Show loading state (you could add a loading spinner here)
-    const submitButton = document.querySelector('#contact-form button[type="submit"]');
-    const originalText = submitButton.innerHTML;
-
-    submitButton.innerHTML = `
-        <svg class="btn-icon animate-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-            <path d="M21 12a9 9 0 11-6.219-8.56"/>
-        </svg>
-        Enviando...
-    `;
-    submitButton.disabled = true;
-
-    // Simulate API call delay
-    setTimeout(() => {
-        // Reset form
-        document.getElementById('contact-form').reset();
-
-        // Reset button
-        submitButton.innerHTML = originalText;
-        submitButton.disabled = false;
-
-        // Show success message
-        showToast('Mensagem enviada!', 'success');
-
-        // In a real application, you would send the data to your server here
-        console.log('Contact form submitted:', { name, email, message });
-    }, 1500);
 }
 
 // Toast notification system
@@ -198,17 +188,6 @@ function initializeAnimations() {
         el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
         observer.observe(el);
     });
-
-    // Parallax effect for hero particles
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const particles = document.querySelectorAll('.particle');
-
-        particles.forEach((particle, index) => {
-            const speed = 0.5 + (index * 0.1);
-            particle.style.transform = `translateY(${scrolled * speed}px)`;
-        });
-    });
 }
 
 // Update current year in footer
@@ -218,26 +197,6 @@ function updateCurrentYear() {
         yearElement.textContent = new Date().getFullYear();
     }
 }
-
-// Download CV functionality
-document.addEventListener('DOMContentLoaded', function () {
-    const downloadButton = document.getElementById('download-cv');
-
-    if (downloadButton) {
-        downloadButton.addEventListener('click', function (e) {
-            e.preventDefault();
-
-            // You can replace this with actual CV download logic
-            showToast('CV será baixado em breve!', 'success');
-
-            // Example: Create a download link for your CV
-            const link = document.createElement('a');
-            link.href = 'CV.pdf';
-            link.download = 'CV-FullStack-Developer.pdf';
-            link.click();
-        });
-    }
-});
 
 // Initialize mobile menu
 function initializeMobileMenu() {
@@ -249,8 +208,12 @@ function initializeMobileMenu() {
             navMenu.classList.toggle('active');
             navToggle.classList.toggle('active');
 
+            const isOpen = navMenu.classList.contains('active');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+            navToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+
             // Add show class after a small delay for animation
-            if (navMenu.classList.contains('active')) {
+            if (isOpen) {
                 setTimeout(() => {
                     navMenu.classList.add('show');
                 }, 10);
@@ -259,20 +222,23 @@ function initializeMobileMenu() {
             }
         });
 
+        function closeMenu() {
+            navMenu.classList.remove('active', 'show');
+            navToggle.classList.remove('active');
+            navToggle.setAttribute('aria-expanded', 'false');
+            navToggle.setAttribute('aria-label', 'Abrir menu');
+        }
+
         // Close menu when clicking on a link
         const navLinks = navMenu.querySelectorAll('.nav-link, .nav-button');
         navLinks.forEach(link => {
-            link.addEventListener('click', function () {
-                navMenu.classList.remove('active', 'show');
-                navToggle.classList.remove('active');
-            });
+            link.addEventListener('click', closeMenu);
         });
 
         // Close menu when clicking outside
         document.addEventListener('click', function (e) {
             if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
-                navMenu.classList.remove('active', 'show');
-                navToggle.classList.remove('active');
+                closeMenu();
             }
         });
     }
@@ -287,38 +253,3 @@ document.addEventListener('keydown', function (e) {
         }
     }
 });
-
-// Performance optimization: Debounce scroll events
-function debounce(func, wait) {
-    let timeout;
-    return function executedFunction(...args) {
-        const later = () => {
-            clearTimeout(timeout);
-            func(...args);
-        };
-        clearTimeout(timeout);
-        timeout = setTimeout(later, wait);
-    };
-}
-
-// Apply debounce to scroll-heavy functions
-window.addEventListener('scroll', debounce(() => {
-    // Any scroll-intensive operations can go here
-}, 10));
-
-// Preload important images
-function preloadImages() {
-    // Add any important images you want to preload
-    const imageUrls = [
-        // 'path/to/your/image1.jpg',
-        // 'path/to/your/image2.jpg'
-    ];
-
-    imageUrls.forEach(url => {
-        const img = new Image();
-        img.src = url;
-    });
-}
-
-// Initialize preloading
-document.addEventListener('DOMContentLoaded', preloadImages);
