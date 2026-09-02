@@ -792,6 +792,11 @@
   <!-- Functional UI (always loads) -->
   <script type="module" src="/js/ui.js"></script>
 
+  <!-- Animation layer (anime.js v4, ESM) -->
+  <link rel="modulepreload" href="/js/main.js" />
+  <link rel="modulepreload" href="/js/motion/anime.js" />
+  <script type="module" src="/js/main.js"></script>
+
   <!-- Anime.js Animation Engine (v3 — removed in migration Task 8) -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.2/anime.min.js"></script>
   <script src="script.js"></script>
