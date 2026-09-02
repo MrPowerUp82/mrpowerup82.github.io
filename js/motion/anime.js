@@ -6,6 +6,7 @@ export {
     animate,
     createTimeline,
     createTimer,
+    createSpring,
     stagger,
     svg,
     utils,

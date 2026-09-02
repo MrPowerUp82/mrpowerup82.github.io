@@ -7,11 +7,10 @@ import { prefersReducedMotion } from './motion/env.js';
 
 async function boot() {
     try {
-        await import('./motion/anime.js'); // validates the CDN is reachable
+        await import('./motion/anime.js');
 
-        // Concern modules are imported and initialised here in Tasks 3-7.
-        // Intentionally empty in Task 2.
-        void prefersReducedMotion;
+        const { initCircuit } = await import('./motion/circuit.js');
+        initCircuit({ staticFrame: prefersReducedMotion() });
     } catch (err) {
         document.documentElement.classList.add('no-motion');
         console.warn('[motion] animation layer disabled:', err);
