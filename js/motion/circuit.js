@@ -317,6 +317,23 @@ export function initCircuit({ staticFrame = false } = {}) {
             ctx.restore();
         });
 
+        // Cursor magnetism: pull nearby nodes toward the pointer, spring back when idle.
+        for (const node of nodes) {
+            if (mouse.active && width > 768) {
+                const dx = mouse.x - node.baseX;
+                const dy = mouse.y - node.baseY;
+                const dist = Math.hypot(dx, dy);
+                if (dist < 160) {
+                    const pull = (1 - dist / 160) * 12;
+                    node.x += ((node.baseX + (dx / dist) * pull) - node.x) * 0.12;
+                    node.y += ((node.baseY + (dy / dist) * pull) - node.y) * 0.12;
+                    continue;
+                }
+            }
+            node.x += (node.baseX - node.x) * 0.08; // ease home
+            node.y += (node.baseY - node.y) * 0.08;
+        }
+
         // 3. Draw Nodes & Microchips
         nodes.forEach(node => {
             const rad = node.radius * node.scale;

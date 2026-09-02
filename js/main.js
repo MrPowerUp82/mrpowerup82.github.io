@@ -9,8 +9,13 @@ async function boot() {
     try {
         await import('./motion/anime.js');
 
-        const { initCircuit } = await import('./motion/circuit.js');
+        const [{ initCircuit }, { initHero }] = await Promise.all([
+            import('./motion/circuit.js'),
+            import('./motion/hero.js'),
+        ]);
+
         initCircuit({ staticFrame: prefersReducedMotion() });
+        initHero();
     } catch (err) {
         document.documentElement.classList.add('no-motion');
         console.warn('[motion] animation layer disabled:', err);

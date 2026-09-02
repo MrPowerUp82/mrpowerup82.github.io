@@ -6,7 +6,6 @@
 document.addEventListener('DOMContentLoaded', function () {
     // Anime.js Animations & Circuit Engine
     if (typeof anime !== 'undefined') {
-        initializeHeroTimeline();
         initializeScrollAnimations();
         initializeInteractiveMicroAnimations();
     } else {
@@ -14,85 +13,6 @@ document.addEventListener('DOMContentLoaded', function () {
         initializeFallbackAnimations();
     }
 });
-
-// ==========================================
-// 1. CYBER-CIRCUIT & IoT ANIMATION ENGINE (Anime.js + Canvas)
-// ==========================================
-let circuitEngine = null;
-
-// ==========================================
-// 2. HERO ORCHESTRATION TIMELINE (Anime.js)
-// ==========================================
-function initializeHeroTimeline() {
-    const badge = document.getElementById('hero-badge');
-    const titleLines = document.querySelectorAll('.hero-line');
-    const desc = document.getElementById('hero-desc');
-    const buttons = document.querySelectorAll('#hero-buttons .btn');
-    const arrow = document.getElementById('hero-arrow');
-
-    // Create High-Tech System Boot Timeline
-    const heroTl = anime.timeline({
-        easing: 'easeOutExpo',
-        duration: 900
-    });
-
-    heroTl
-        // 1. Cyber Badge Pops in
-        .add({
-            targets: badge,
-            opacity: [0, 1],
-            translateY: [-25, 0],
-            scale: [0.85, 1],
-            duration: 850,
-            easing: 'spring(1, 80, 10, 0)'
-        })
-        // 2. Title Lines Reveal with Spring Physics
-        .add({
-            targets: titleLines,
-            opacity: [0, 1],
-            translateY: [45, 0],
-            rotateX: [-15, 0],
-            delay: anime.stagger(140),
-            duration: 950,
-            easing: 'spring(1, 75, 12, 0)'
-        }, '-=550')
-        // 3. Description Fades and Glides in
-        .add({
-            targets: desc,
-            opacity: [0, 1],
-            translateY: [25, 0],
-            duration: 800,
-            easing: 'easeOutCubic'
-        }, '-=600')
-        // 4. Action Buttons Pop with Elastic Bounce
-        .add({
-            targets: buttons,
-            opacity: [0, 1],
-            translateY: [25, 0],
-            scale: [0.92, 1],
-            delay: anime.stagger(90),
-            duration: 850,
-            easing: 'spring(1, 85, 10, 0)'
-        }, '-=500')
-        // 5. Scroll Indicator
-        .add({
-            targets: arrow,
-            opacity: [0, 1],
-            translateY: [15, 0],
-            duration: 700,
-            easing: 'easeOutCubic',
-            complete: () => {
-                // Trigger initial power-up spark wave across the hero board
-                if (circuitEngine) {
-                    const hero = document.querySelector('.hero');
-                    if (hero) {
-                        const rect = hero.getBoundingClientRect();
-                        circuitEngine.triggerSurge(rect.width / 2, rect.height * 0.4, 1.2);
-                    }
-                }
-            }
-        }, '-=400');
-}
 
 // ==========================================
 // 3. SCROLL REVEALS & STAGGERING (Anime.js + Observer)
