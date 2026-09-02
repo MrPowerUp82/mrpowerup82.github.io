@@ -1419,6 +1419,33 @@ body::before {
     }
 }
 
+/* CDN failure fallback: js/main.js sets <html class="no-motion"> */
+.no-motion #hero-badge,
+.no-motion .hero-line,
+.no-motion #hero-desc,
+.no-motion #hero-buttons .btn,
+.no-motion #hero-arrow,
+.no-motion .section-title,
+.no-motion .section-description,
+.no-motion .specialty-card,
+.no-motion .skill-category,
+.no-motion .skill-tag,
+.no-motion .project-card {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+}
+
+.no-motion .specialty-icon svg *,
+.no-motion .project-icon svg * {
+    opacity: 1 !important;
+    stroke-dashoffset: 0 !important;
+}
+
+.no-motion .read-progress {
+    display: none;
+}
+
 /* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
 
