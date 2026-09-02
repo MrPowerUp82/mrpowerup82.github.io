@@ -9,17 +9,20 @@ async function boot() {
     try {
         await import('./motion/anime.js');
 
-        const [{ initCircuit }, { initHero }, { initScroll }, { initSVG }] = await Promise.all([
-            import('./motion/circuit.js'),
-            import('./motion/hero.js'),
-            import('./motion/scroll.js'),
-            import('./motion/svg.js'),
-        ]);
+        const [{ initCircuit }, { initHero }, { initScroll }, { initSVG }, { initInteractions }] =
+            await Promise.all([
+                import('./motion/circuit.js'),
+                import('./motion/hero.js'),
+                import('./motion/scroll.js'),
+                import('./motion/svg.js'),
+                import('./motion/interactions.js'),
+            ]);
 
         initCircuit({ staticFrame: prefersReducedMotion() });
         initHero();
         initScroll();
         initSVG();
+        initInteractions();
     } catch (err) {
         document.documentElement.classList.add('no-motion');
         console.warn('[motion] animation layer disabled:', err);
