@@ -225,13 +225,24 @@ body::before {
     position: absolute;
     inset: 0;
     background: var(--gradient-hero);
-    opacity: 0.06;
+    opacity: 0.08;
+}
+
+.hero-circuit-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    pointer-events: auto;
 }
 
 .hero-particles {
     position: absolute;
     inset: 0;
     overflow: hidden;
+    z-index: 2;
+    pointer-events: none;
 }
 
 .particle {
@@ -316,7 +327,67 @@ body::before {
     max-width: 64rem;
     margin: 0 auto;
     padding: 0 1.5rem;
-    margin-top: 4rem;
+    margin-top: 3rem;
+    pointer-events: none; /* Let canvas capture subtle mouse events behind text or on sides */
+}
+
+.hero-content > * {
+    pointer-events: auto; /* Re-enable buttons and links */
+}
+
+/* Cyber Electrical Badge */
+.hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.4rem 1rem;
+    background: rgba(13, 22, 33, 0.75);
+    border: 1px solid hsl(187 65% 52% / 0.35);
+    border-radius: 9999px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0 0 20px hsl(187 65% 52% / 0.15), inset 0 0 12px hsl(187 65% 52% / 0.08);
+    margin-bottom: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--color-primary);
+    position: relative;
+    opacity: 0; /* Animated with Anime.js */
+    transform: translateY(-20px);
+}
+
+.hero-badge-pulse {
+    position: absolute;
+    left: 1rem;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 10px var(--color-accent);
+    animation: badgePing 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.hero-badge-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    box-shadow: 0 0 8px var(--color-accent);
+    position: relative;
+    z-index: 2;
+}
+
+.hero-badge-text {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes badgePing {
+    75%, 100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
 }
 
 .hero-title {
@@ -324,18 +395,28 @@ body::before {
     font-weight: 700;
     letter-spacing: -0.03em;
     margin-bottom: 1.5rem;
-    line-height: 1.05;
-    animation: fadeInUp 1s ease-out 0.3s both;
+    line-height: 1.08;
+    perspective: 1000px;
+}
+
+.hero-line {
+    display: inline-block;
+    opacity: 0; /* Animated with Anime.js */
+    transform: translateY(30px);
+    will-change: transform, opacity;
 }
 
 .hero-description {
-    font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+    font-size: clamp(1.125rem, 2.5vw, 1.45rem);
     color: var(--text-muted);
     margin-bottom: 2rem;
     max-width: 44rem;
     margin-left: auto;
     margin-right: auto;
     text-wrap: pretty;
+    opacity: 0; /* Animated with Anime.js */
+    transform: translateY(20px);
+    will-change: transform, opacity;
 }
 
 .hero-buttons {
@@ -347,9 +428,16 @@ body::before {
     margin-bottom: 3rem;
 }
 
+.hero-buttons .btn {
+    opacity: 0; /* Animated with Anime.js */
+    transform: translateY(20px);
+    will-change: transform, opacity;
+}
+
 .hero-arrow {
     animation: bounce 2s infinite;
     cursor: pointer;
+    opacity: 0; /* Animated with Anime.js */
 }
 
 .hero-arrow svg {
@@ -361,6 +449,7 @@ body::before {
 
 .hero-arrow:hover svg {
     color: var(--color-primary);
+    filter: drop-shadow(0 0 8px var(--color-primary));
 }
 
 /* Buttons */
