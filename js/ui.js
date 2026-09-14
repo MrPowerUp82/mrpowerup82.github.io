@@ -125,8 +125,27 @@ function initializeMobileMenu() {
     const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
     if (!navMenu || !navToggle) return;
+    const gamesDropdown = document.getElementById('games-dropdown');
+
+    function closeGames() {
+        if (gamesDropdown) gamesDropdown.open = false;
+    }
+
+    if (gamesDropdown) {
+        gamesDropdown.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && gamesDropdown.open) {
+                e.preventDefault();
+                closeGames();
+                gamesDropdown.querySelector('summary').focus();
+            }
+        });
+        gamesDropdown.addEventListener('focusout', function (e) {
+            if (!gamesDropdown.contains(e.relatedTarget)) closeGames();
+        });
+    }
 
     navToggle.addEventListener('click', function () {
+        closeGames();
         navMenu.classList.toggle('active');
         navToggle.classList.toggle('active');
         const isOpen = navMenu.classList.contains('active');
@@ -140,15 +159,17 @@ function initializeMobileMenu() {
     });
 
     function closeMenu() {
+        closeGames();
         navMenu.classList.remove('active', 'show');
         navToggle.classList.remove('active');
         navToggle.setAttribute('aria-expanded', 'false');
         navToggle.setAttribute('aria-label', 'Abrir menu');
     }
 
-    navMenu.querySelectorAll('.nav-link, .nav-button').forEach(link =>
+    navMenu.querySelectorAll('a.nav-link, a.nav-button').forEach(link =>
         link.addEventListener('click', closeMenu));
     document.addEventListener('click', function (e) {
+        if (gamesDropdown && !gamesDropdown.contains(e.target)) closeGames();
         if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) closeMenu();
     });
 }

@@ -120,8 +120,19 @@
           <a href="#projects" class="nav-link">Projetos</a>
           <a href="https://drive.google.com/drive/folders/1B92fP3188t7MhepXJruS81JUxQ1bGpGK" target="_blank"
             rel="noopener noreferrer" class="nav-link">Certificados</a>
-          <a href="/mario-jump" class="nav-link">MarioJump</a>
-          <a href="/vampiric-survival" class="nav-link">Vampiric Survival</a>
+          <details class="nav-dropdown" id="games-dropdown">
+            <summary class="nav-link nav-dropdown-toggle">Jogos
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" aria-hidden="true">
+                <polyline points="6,9 12,15 18,9" />
+              </svg>
+            </summary>
+            <ul class="nav-submenu" aria-label="Jogos">
+              <!-- Adicione novos links de jogos como itens desta lista. -->
+              <li><a href="/mario-jump" class="nav-link">MarioJump</a></li>
+              <li><a href="/vampiric-survival" class="nav-link">Vampiric Survival</a></li>
+              <li><a href="/wizard-coop" class="nav-link">Wizard Coop</a></li>
+            </ul>
+          </details>
           <a href="#contact" class="nav-button">Contato</a>
         </div>
         <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menu" aria-expanded="false"
